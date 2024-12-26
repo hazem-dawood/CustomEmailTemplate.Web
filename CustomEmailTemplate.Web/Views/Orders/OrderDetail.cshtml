@@ -1,0 +1,180 @@
+﻿@model OrderDto
+@{
+    Layout = null;
+    var direction = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? "rtl" : "ltr";
+}
+<!DOCTYPE html>
+<html lang="@Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://drive.google.com/uc?export=view&id=1zvEo169K-nX704-jNh7cXfGx7VdyB2Ua" type="image/x-icon">
+    <title>Order Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800;1,900&display=swap" rel="stylesheet">
+    <partial name="/Views/Orders/_OrderDetailStyles.cshtml" />
+</head>
+<body style="margin: 20px auto;" dir="@direction">
+    <table class="main">
+        <tr>
+            <td>
+                <!-- top image  -->
+                <table style="padding-top: 30px;">
+                    <tr>
+                        <td>
+                            <img style="margin-bottom: 10px;width: 80%;" src="http://drive.google.com/uc?export=view&id=1DF60NIdaPL_HKnWioaevl0buELTCHggP" alt="order-image">
+                        </td>
+                    </tr>
+                </table>
+                <!-- content  -->
+                <table>
+                    <tr style="display: flex; flex-direction: column; padding: 25px 0px;">
+                        <td style="padding-bottom: 10px;">
+                            <h5 style="font-size: 24px; color: black; line-height: 32px; text-transform: uppercase;">thank you </h5>
+                        </td>
+                        <td>
+                            <p style="color: #777777;">Payment Is Successfully Processsed And Your Order Is On The Way</p>
+                        </td>
+                        <td style="margin-top: -10px;">
+                            <p style="color: #777777;">Transaction ID: @Model.ReferenceNumber </p>
+                        </td>
+                        <td>
+                            <div style="border-top: 1px solid #ddd;height:1px;margin-top: 30px;"></div>
+                        </td>
+                    </tr>
+                </table>
+                <!-- order heading  -->
+                <table style="margin-top: 20px;">
+                    <tr>
+                        <td style="text-align: start;">
+                            <h2 style="font-size: 28px; line-height: 40px; text-transform: uppercase;">your order details</h2>
+                        </td>
+                    </tr>
+                </table>
+                <!-- order table  -->
+                <table class="order-details">
+                    <tbody>
+                        <tr style="text-align: left;">
+                            <th style="width: 20%;">Product</th>
+                            <th style="text-align: end;">Quantity</th>
+                            <th style="text-align: end;">Price</th>
+                            <th style="text-align: end;">Total</th>
+                        </tr>
+                        <!-- product-1  -->
+                        @foreach (var item in Model.Details)
+                        {
+                            <tr class="product">
+                                <td>
+                                    @item.ProductName
+                                </td>
+                                <td>
+                                    <h5 style="font-weight: 400;">@item.Quantity </h5>
+                                    <h5 style="font-weight: 400;"></h5>
+                                </td>
+                                <td><b>@item.Price.ToString("C")</b></td>
+                                <td><b>@item.Total.ToString("C")</b></td>
+                            </tr>
+                        }
+
+                        <!-- total products-  -->
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td colspan="3" style="text-align: left; padding: 15px;">Total PAID  :</td>
+                            <td>@Model.Total.ToString("C") </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- address  -->
+                <table style="padding: 30px 0px;">
+                    <tr>
+                        <td style="display: flex; gap: 30px; text-align: start;">
+                            <table>
+                                <tr style="display: flex; flex-direction: column; ">
+                                    <td style="border-bottom: 1px solid #ddd;">
+                                        <h3 style="font-size: 16px; font-weight: 500; text-transform: uppercase; padding-bottom: 15px;">delivery address</h3>
+                                    </td>
+                                    <td style="padding-top: 10px;">
+                                        <p style="font-size: 14px; font-weight: normal;">
+                                            LGED mor , Dewla , Tangail,
+                                            <br>
+                                            IN 12343456 Tangail Lane
+                                            <br>
+                                            New Bus Stand, IN 12345
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table>
+                                <tr style="display: flex; flex-direction: column; ">
+                                    <td style="border-bottom: 1px solid #ddd;">
+                                        <h3 style="font-size: 16px; font-weight: 500; text-transform: uppercase; padding-bottom: 15px;">Shipping address</h3>
+                                    </td>
+                                    <td style="padding-top: 10px;">
+                                        <p style="font-size: 14px; font-weight: normal;">
+                                            LGED mor , Dewla , Tangail,
+                                            <br>
+                                            IN 12343456 Tangail Lane
+                                            <br>
+                                            New Bus Stand, IN 12345
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!-- footer  -->
+    <table class="footer">
+
+        <tbody>
+
+            <tr>
+
+                <td>
+
+                    <table>
+                        <tr>
+                            <td style="padding-bottom: 20px;">
+                                <h4 style="color: white; font-size: 24px; line-height: 32px; text-decoration: underline; cursor: pointer;">Follow Us</h4>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="display: flex; justify-content: center;">
+
+                        <tr style="display: flex; align-items: center; justify-content: center;">
+
+                            <td style="padding: 0px 10px;">
+                                <a href="#">
+                                    <img src="http://drive.google.com/uc?export=view&id=1L8OSk2WAzGs7y2aBcBLhQR8wfSvAduZQ" alt="" style="font-size: 25px; width: 22px; filter: invert(1);">
+                                </a>
+                            </td>
+
+                            <td style="padding: 0px 10px;">
+                                <a href="#">
+                                    <img src="http://drive.google.com/uc?export=view&id=1sThhYiE9eACVbgIf7a8-vcG6y1IHpIcl" alt="" style="font-size: 25px; width: 22px; filter: invert(1);">
+                                </a>
+                            </td>
+
+                            <td style="padding: 0px 10px;">
+                                <a href="#">
+                                    <img src="http://drive.google.com/uc?export=view&id=1IWdipn8DPPuhujLXgJWra1hBlw3uq4vL" alt="" style="font-size: 25px; width: 22px; filter: invert(1);">
+                                </a>
+                            </td>
+
+                            <td style="padding: 0px 10px;">
+                                <a href="#">
+                                    <img src="http://drive.google.com/uc?export=view&id=1kpSdH9BHewjZbK4bfnXZDpdfHZ_2Qd2f" alt="" style="font-size: 25px; width: 22px; filter: invert(1);">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,141 @@
+﻿@model OrderDto
+@{
+    Layout = null;
+    var direction = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? "rtl" : "ltr";
+}
+<!DOCTYPE html>
+<html lang="@Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary Email</title>
+    <style type="text/css">
+        @@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #f3f3f3b0;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        table {
+            border-spacing: 0;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            width: 100%;
+        }
+
+        .para {
+            color: #333;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f3f3f3b0;
+            padding-bottom: 50px;
+            color: #fff;
+        }
+
+        h2 {
+            color: #0c3c3c;
+        }
+
+        .table__main {
+            background: #ffffff;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body dir="@direction">
+    <div class="wrapper">
+        <table class="table__main" width="100%">
+            <tr>
+                <td>
+                    <table width="100%" style="background:#0c3c3c;padding:20px 0;">
+                        <tr style="text-align:center;">
+                            <td>
+                                <img src="https://www.svgrepo.com/show/508699/landscape-placeholder.svg" alt="logo" style="width:200px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px 0 0 25px;">
+                                <h1>Thank You For Your Order !</h1>
+                                <p>
+                                    Now you can relax . We're working on
+                                    <br /> getting your food to you ASAP !
+                                </p>
+                                <a style="background:#fff;font-weight:700;padding:8px 15px; color:#0c3c3c;text-decoration:none;"
+                                   href="#" target="_blank">FOLLOW YOUR DELIVERY</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%" style="padding-left:25px;">
+                        <tr>
+                            <td>
+                                <h2>Order Summary</h2>
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="para">
+                                    TRANSACTION NO : NRSTV56390
+                                    <br />Expected Delivery Time : 8:30 PM
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="para">
+                                    @DateTime.Now.AddMinutes(18).ToString("MM/dd/yyyy HH:mm") <br />
+                                    Order From , Egypt
+                                </p>
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%;" style="padding:20px 10px;background-color:#0c3c3c;text-align:center">
+                        <tr>
+                            <td>
+                                <p>
+                                    For any query <br />
+                                    Call us at : Hazem Dawood<br />
+                                    Email us -
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

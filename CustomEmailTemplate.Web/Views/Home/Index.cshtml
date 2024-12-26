@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@{
+    ViewData["Title"] = "Home Page";
+    @inject IViewLocalizer ViewLocalizer;
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-success" id="btnAddNewOrder">@ViewLocalizer["Add New Order"] </button>
+        </div>
+        <div class="col-md-12" id="divHtml" style="display: none;">
+            <iframe id="previewFrame" style="width: 600px;height: 800px;"></iframe>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(() => {
+            $("#btnAddNewOrder").click(() => {
+                $("#btnAddNewOrder").hide();
+                var order = {
+                    Details : [
+                        {'ProductName' : 'Test 15' , 'Price' : 12.5 ,"Quantity" : 5},
+                        {'ProductName' : 'Test 12' , 'Price' : 17.5 ,"Quantity" : 7}]
+                };
+                $.post('@Url.Action("AddOrder")', order, (res) => {
+                    if (res.isSuccess) {
+                        $("#divHtml").show();
+                        previewHTML(res.data.emailHtml);
+                        downloadPdf(res.data.pdf);
+                    } else {
+                        $("#btnAddNewOrder").show();
+                        console.log(res.messages);
+                    }
+                });
+            });
+        });
+        /**
+         * @@param {string} htmlContent
+         */
+        function previewHTML(htmlContent) {
+            var previewFrame = document.getElementById("previewFrame").contentWindow.document;
+            previewFrame.open();
+            previewFrame.write(htmlContent);
+            previewFrame.close();
+        }
+
+        /**
+         * @@param {string} file
+         */
+        function downloadPdf(pdfBase64) {
+            var byteCharacters = atob(pdfBase64);
+            var byteArrays = [];
+
+            for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
+                        var slice = byteCharacters.slice(offset, offset + 1024);
+                        var byteNumbers = new Array(slice.length);
+
+                for (let i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                byteArrays.push(new Uint8Array(byteNumbers));
+            }
+
+            var blob = new Blob(byteArrays, { type: 'application/pdf' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'file.pdf';  // Specify the file name
+            link.click();
+
+        }
+
+    </script>
+}

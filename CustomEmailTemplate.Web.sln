@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEmailTemplate.Web", "CustomEmailTemplate.Web\CustomEmailTemplate.Web.csproj", "{02A3865B-4DB2-454F-97A4-87D7FCC78700}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomEmailTemplate.Application", "CustomEmailTemplate.Application\CustomEmailTemplate.Application.csproj", "{716F0AED-0B02-4484-BD5E-B7F68EE62513}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02A3865B-4DB2-454F-97A4-87D7FCC78700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A3865B-4DB2-454F-97A4-87D7FCC78700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A3865B-4DB2-454F-97A4-87D7FCC78700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A3865B-4DB2-454F-97A4-87D7FCC78700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{716F0AED-0B02-4484-BD5E-B7F68EE62513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716F0AED-0B02-4484-BD5E-B7F68EE62513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716F0AED-0B02-4484-BD5E-B7F68EE62513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716F0AED-0B02-4484-BD5E-B7F68EE62513}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
